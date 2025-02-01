@@ -25,6 +25,12 @@ module.exports = buildSchema(`
         createdAt: String!
         updatedAt: String!
     }
+    
+    type AuthData {
+        userId: ID!
+        token: String!
+        tokenExpiration:Int!
+    }
 
     input UserInput {
         email: String!
@@ -43,6 +49,7 @@ module.exports = buildSchema(`
     type rootQuery {
         events: [Event!]!
         bookings: [Booking!]!
+        login(email:String!, password:String!): AuthData!
     
     }
 
